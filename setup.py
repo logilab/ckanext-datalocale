@@ -59,7 +59,10 @@ setup(
     # project is installed. For an analysis of "install_requires" vs pip's
     # requirements files see:
     # https://packaging.python.org/en/latest/technical.html#install-requires-vs-requirements-files
-    install_requires=[],
+    install_requires=[
+        'ckanext-dcat',
+        'rdflib',
+    ],
 
     # If there are data files included in your packages that need to be
     # installed, specify them here.  If using Python 2.6 or less, then these
@@ -82,6 +85,9 @@ setup(
         datalocale=ckanext.datalocale.plugin:DatalocalePlugin
         [paste.paster_command]
         datastore-cleanup=ckanext.datalocale.commands:DataStoreCleanup
+        [ckan.rdf.profiles]
+        eurovoc_groups_dcat_ap=ckanext.datalocale.skosprofile:EurovocGroupsDCATAPProfile
+        labeled_concepts_dcat_ap=ckanext.datalocale.skosprofile:LabeledConceptsDCATAPProfile
 	[babel.extractors]
 	ckan = ckan.lib.extract:extract_ckan
     ''',
